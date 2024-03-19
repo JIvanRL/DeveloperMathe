@@ -70,6 +70,7 @@ include_once 'dbConnection.php';
             <li <?php if (@$_GET['q'] == 1) echo 'class="active"'; ?>><a href="account.php?q=1"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>&nbsp;Inicio<span class="sr-only">(current)</span></a></li>
             <li <?php if (@$_GET['q'] == 2) echo 'class="active"'; ?>><a href="account.php?q=2"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>&nbsp;Historia</a></li>
             <li <?php if (@$_GET['q'] == 3) echo 'class="active"'; ?>><a href="account.php?q=3"><span class="glyphicon glyphicon-stats" aria-hidden="true"></span>&nbsp;Calificaciones</a></li>
+            <li <?php if (@$_GET['q'] == 4) echo 'class="active"'; ?>><a href="account.php?q=4"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span>&nbsp;Cambiar Contraseña</a></li>
             <li class="pull-right"> <a href="logout.php?q=account.php"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;&nbsp;Cerrar Sesión</a></li>
           </ul>
 
@@ -196,6 +197,28 @@ include_once 'dbConnection.php';
             }
             echo '</table></div></div>';
           }
+          if (@$_GET['q'] == 4) {
+            // Mostrar el formulario para cambiar la contraseña
+            echo '
+            <div class="panel">
+                <h2>Cambio de Contraseña</h2>
+                <form action="este_archivo.php?q=change_password" method="post">
+                    <div class="form-group">
+                        <label for="old_password">Contraseña Antigua:</label>
+                        <input type="password" class="form-control" id="old_password" name="old_password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="new_password">Nueva Contraseña:</label>
+                        <input type="password" class="form-control" id="new_password" name="new_password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirm_password">Confirmar Nueva Contraseña:</label>
+                        <input type="password" class="form-control" id="confirm_password" name="confirm_password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Cambiar Contraseña</button>
+                </form>
+            </div>';
+        }
           ?>
         </div>
       </div>
