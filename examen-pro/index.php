@@ -109,7 +109,7 @@
                     </div>
                   </div>
  
- 
+
                   <!-- Password input-->
                   <div class="form-group">
                     <label class="col-md-3 control-label" for="password"></label>
@@ -123,6 +123,7 @@
             <div class="modal-footer">
               <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
               <button type="submit" class="btn btn-primary">Ingresar</button>
+              <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#passwordRecoveryModal">Cambiar contraseña</button>
               </fieldset>
               </form>
             </div>
@@ -133,6 +134,41 @@
  
     </div><!--header row closed-->
   </div>
+  <!-- Password Recovery Modal start -->
+<div class="modal fade" id="passwordRecoveryModal">
+ <div class="modal-dialog" style="background-color:blue; top: 150px;">
+    <div class="modal-content title1">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title title1"><span style="color:black; position: relative; left: 45%;">Recuperar Contraseña</span></h4>
+      </div>
+      <div class="modal-body">
+        <form class="form-horizontal" action="recover_password.php" method="POST">
+          <fieldset>
+            <!-- Email input-->
+            <div class="form-group">
+              <label class="col-md-3 control-label" for="recover_email"></label>
+              <div class="col-md-6">
+                <input id="recover_email" name="recover_email" placeholder="Ingresa tu correo electrónico" class="form-control input-md" type="email">
+              </div>
+            </div>
+            <!-- Submit Button -->
+            <div class="form-group">
+                  <div class="col-md-6 col-md-offset-3">
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+                  </div>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+      <div class="modal-footer">
+         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+ </div>
+</div>
+<!-- Password Recovery Modal closed -->
+
  
   <div class="bg1">
     <div class="row">

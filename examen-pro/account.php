@@ -198,7 +198,7 @@ include_once 'dbConnection.php';
             echo '</table></div></div>';
           }
           if (@$_GET['q'] == 4) {
-            // Mostrar el formulario para cambiar la contraseña
+            // Mostrar el formulario para cambiar la contraseña--creado por Ivan
             echo '
             <div class="panel">
                 <h2>Cambio de Contraseña</h2>
