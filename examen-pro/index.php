@@ -135,6 +135,7 @@
     </div><!--header row closed-->
   </div>
   <!-- Password Recovery Modal start -->
+  <!-- hola mundo, en comentario -->
 <div class="modal fade" id="passwordRecoveryModal">
  <div class="modal-dialog" style="background-color:blue; top: 150px;">
     <div class="modal-content title1">
