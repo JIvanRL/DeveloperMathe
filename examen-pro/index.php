@@ -13,7 +13,9 @@
   <script src="js/jquery.js" type="text/javascript"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="js/bootstrap.min.js" type="text/javascript"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
+  <script src="js/main2.js"></script>
   <?php if (@$_GET['w']) {
     echo '<script>alert("' . @$_GET['w'] . '");</script>';
   }
@@ -74,7 +76,6 @@
       }
     }
   </script>
-  
    
 </head>   
   
@@ -104,7 +105,7 @@
                   <div class="form-group">
                     <label class="col-md-3 control-label" for="email"></label>
                     <div class="col-md-6">
-                      <input id="email" name="email" placeholder="Ingresa tu correo electrónico" class="form-control input-md" type="email">
+                      <input id="email" name="email" placeholder="Ingresa tu correo electrónico" class="form-control input-md" type="email" required>
 
                     </div>
                   </div>
@@ -114,7 +115,7 @@
                   <div class="form-group">
                     <label class="col-md-3 control-label" for="password"></label>
                     <div class="col-md-6">
-                      <input id="password" name="password" placeholder="Ingresa tu contraseña" class="form-control input-md" type="password">
+                      <input id="password" name="password" placeholder="Ingresa tu contraseña" class="form-control input-md" type="password" required>
 
                     </div>
                   </div>
@@ -134,7 +135,7 @@
  
     </div><!--header row closed-->
   </div>
-  <!-- Password Recovery Modal start -->
+ <!-- Password Recovery Modal start -->
 <div class="modal fade" id="passwordRecoveryModal">
  <div class="modal-dialog" style="background-color:blue; top: 150px;">
     <div class="modal-content title1">
@@ -143,7 +144,8 @@
         <h4 class="modal-title title1"><span style="color:black; position: relative; left: 45%;">Recuperar Contraseña</span></h4>
       </div>
       <div class="modal-body">
-        <form class="form-horizontal" action="recover_password.php" method="POST">
+        <div id="modalMessage"></div> <!-- Agrega este div para mostrar el mensaje -->
+        <form id="recoverForm" class="form-horizontal" action="javascript:void(0);" method="POST">
           <fieldset>
             <!-- Email input-->
             <div class="form-group">
@@ -154,9 +156,9 @@
             </div>
             <!-- Submit Button -->
             <div class="form-group">
-                  <div class="col-md-6 col-md-offset-3">
+                 <div class="col-md-6 col-md-offset-3">
                     <button type="submit" class="btn btn-primary">Enviar</button>
-                  </div>
+                 </div>
             </div>
           </fieldset>
         </form>
@@ -341,7 +343,6 @@
     </div>
   </div>
   <!--footer end-->
- 
  
 </body>  
    
