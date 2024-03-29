@@ -32,12 +32,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["recover_email"])) {
         $token = bin2hex(random_bytes(50));
         $mail = new PHPMailer(true);
         $mail->isSMTP();
-        $mail->Host = 'smtp-mail.outlook.com';
+        //$mail->Host = 'smtp-mail.outlook.com';
+        $mail->Host = 'smtp.gmail.com';
         $mail->SMTPAuth = true;
         $mail->Username = 'ivanril.tecdeveloper@gmail.com'; // Tu dirección de correo electrónico de Gmail
-        $mail->Password = 'spxyqbprsxazdtum'; // Tu contraseña de outlook
-        $mail->SMTPSecure = 'tls';
-        $mail->Port = 587;
+        $mail->Password = 'jzzu quuq kxis alxd'; // Tu contraseña de outlook o gmail
+        $mail->SMTPSecure = 'ssl';
+        $mail->Port = 465;
 
         // Configura el remitente y el destinatario
         $mail->setFrom('ivanril.tecdeveloper@gmail.com', 'Soporte Técnico');
@@ -58,7 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["recover_email"])) {
         }
     } else {
         // El correo electrónico no existe en la base de datos, muestra un mensaje de error al usuario
-        echo "El correo electrónico proporcionado no está registrado en nuestro sistema.";
+        echo json_encode(['status' => 'success', 'message' => 'El correo electrónico proporcionado no está registrado en nuestro sistema.']);
     }
 } else {
     // El formulario no se envió correctamente, redirige al usuario a la página de inicio
