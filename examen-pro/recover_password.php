@@ -35,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["recover_email"])) {
         $mail->Host = 'smtp-mail.outlook.com';
         $mail->SMTPAuth = true;
         $mail->Username = 'ivanril.tecdeveloper@gmail.com'; // Tu dirección de correo electrónico de Gmail
-        $mail->Password = 'fiacrlmnsitpqbdv'; // Tu contraseña de Gmail
+        $mail->Password = 'spxyqbprsxazdtum'; // Tu contraseña de outlook
         $mail->SMTPSecure = 'tls';
         $mail->Port = 587;
 
