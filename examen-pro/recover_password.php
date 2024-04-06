@@ -27,9 +27,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["recover_email"])) {
 
     // Verifica si el correo electrónico existe en la base de datos
     if (checkIfEmailExistsInDatabase($email, $con)) {
-        // Configura la instancia de PHPMailer
         // Genera un token
         $token = bin2hex(random_bytes(50));
+
+        // Almacena el token en la base de datos junto con el correo electrónico del usuario
+        $query = "INSERT INTO password_reset_tokens (email, token) VALUES (?, ?)";
+        $stmt = $con->prepare($query);
+        $stmt->bind_param("ss", $email, $token);
+        $stmt->execute();
+
+        // Configura la instancia de PHPMailer
         $mail = new PHPMailer(true);
         $mail->isSMTP();
         //$mail->Host = 'smtp-mail.outlook.com';
@@ -48,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["recover_email"])) {
         $mail->isHTML(true);
         $mail->CharSet = 'UTF-8'; // Establece la codificación de caracteres
         $mail->Subject = 'Recuperación de contraseña';
-        $mail->Body = 'Hola,<br><br>Hemos recibido una solicitud para restablecer tu contraseña. Por favor, haz clic en el siguiente enlace para restablecer tu contraseña:<br><br><a href="https://tu-sitio-web.com/reset_password.php?token=' . $token . '">Restablecer contraseña</a><br><br>Si no solicitaste este restablecimiento, por favor ignora este correo electrónico.<br><br>Saludos,<br>Tu equipo de soporte';
+        $mail->Body = 'Hola,<br><br>Hemos recibido una solicitud para restablecer tu contraseña. Por favor, haz clic en el siguiente enlace para restablecer tu contraseña:<br><br><a href="http://localhost/DeveloperMathe//examen-pro/cambio_contra.php?token=' . $token . '">Restablecer contraseña</a><br><br>Si no solicitaste este restablecimiento, por favor ignora este correo electrónico.<br><br>Saludos,<br>Tu equipo de soporte';
 
         // Intenta enviar el correo electrónico
         if (!$mail->send()) {

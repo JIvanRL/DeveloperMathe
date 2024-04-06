@@ -15,7 +15,7 @@
   <script src="js/bootstrap.min.js" type="text/javascript"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
-  <script src="js/script2.js."></script>
+  <script src="js/script2.js"></script>
   <?php if (@$_GET['w']) {
     echo '<script>alert("' . @$_GET['w'] . '");</script>';
   }

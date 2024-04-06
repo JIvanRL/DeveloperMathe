@@ -14,6 +14,18 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
   <script src="js/jquery.js" type="text/javascript"></script>
   <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
+  <script src="js/script4.js"></script>
+  <style>
+    .input-icon-container {
+            position: relative;
+        }
+        .input-icon-container .password-toggle {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            cursor: pointer;
+        }
+  </style>
   <!--alert message-->
   <?php if (@$_GET['w']) {
     echo '<script>alert("' . @$_GET['w'] . '");</script>';
@@ -201,23 +213,44 @@ include_once 'dbConnection.php';
             // Mostrar el formulario para cambiar la contraseña--creado por Ivan
             echo '
             <div class="panel">
-                <h2>Cambio de Contraseña</h2>
-                <form action="este_archivo.php?q=change_password" method="post">
-                    <div class="form-group">
-                        <label for="old_password">Contraseña Antigua:</label>
-                        <input type="password" class="form-control" id="old_password" name="old_password" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="new_password">Nueva Contraseña:</label>
-                        <input type="password" class="form-control" id="new_password" name="new_password" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="confirm_password">Confirmar Nueva Contraseña:</label>
-                        <input type="password" class="form-control" id="confirm_password" name="confirm_password" required>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Cambiar Contraseña</button>
-                </form>
-            </div>';
+    <h2>Cambio de Contraseña</h2>
+    <form id="changePasswordForm" action="actualizarContra.php?q=change_password" method="post">
+        <!-- Campo oculto para el token -->    
+        <div class="form-group">
+        <div class="input-icon-container">
+        <input type="password" class="form-control" id="new_password" name="new_password" placeholder="Nueva Contraseña" required>
+        <i class="fas fa-eye password-toggle" onclick="togglePasswordVisibility(new_password)"></i> 
+        </div>
+        </div>
+        <div class="form-group">
+        <div class="input-icon-container">
+        <input type="password" class="form-control" id="confirm_password" name="confirm_password" placeholder="Confirmar Nueva Contraseña" required>
+            <i class="fas fa-eye password-toggle" onclick="togglePasswordVisibility(confirm_password)"></i> 
+        </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Cambiar Contraseña</button>
+    </form>
+</div>
+
+<!-- Modal para mostrar mensajes -->
+<div class="modal fade" id="responseModal" tabindex="-1" role="dialog" aria-labelledby="responseModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="responseModalLabel">Respuesta</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="responseModalBody">
+                <!-- El mensaje se insertará aquí -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>';
         }
           ?>
         </div>
@@ -316,6 +349,14 @@ include_once 'dbConnection.php';
       });
     });
   });
+  function togglePasswordVisibility(inputId) {
+    var input = document.getElementById(inputId);
+    if (input.type === "password") {
+        input.type = "text";
+    } else {
+        input.type = "password";
+    }
+}
 </script>
 
 </html> 
