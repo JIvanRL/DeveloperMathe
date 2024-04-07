@@ -63,6 +63,7 @@ include_once 'dbConnection.php';
           <a class="navbar-brand" href="#"><b>Buap</b></a>
           <a class="navbar-brand" href="definicion.php"><b>Teoria</b></a>
           <a class="navbar-brand" href="fracciones.php"><b>Fracciones</b></a>
+          <a class="navbar-brand" href="miniExamen.php"><b>TEST Fracciones</b></a>
         </div>
  
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
